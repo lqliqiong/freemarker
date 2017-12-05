@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages={"com.spring"})
+@ComponentScan(basePackages={"com"})
 public class SpringBootFreemarker1Application {
 
 	public static void main(String[] args) {
