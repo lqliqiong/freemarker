@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>freemarker</title>
+    <meta charset="UTF-8">
+    <title>freemarker</title>
+    <link rel="stylesheet" href="/css/newstyle.m.css">
 </head>
 <body>
-<h1>${username}</h1>
-<#assign var="hello spring boot 学习你很开心！" />
-<font size="18px">${var}</font>
-<hr size="10" coloe="red">
+
+<h1>商品列表</h1>
+
+<div class="content infinite-scroll infinite-scroll-bottom">
+
+    <#if  list?? && list?size!=0>
+        <div class="common-goods list-block">
+            <ul class="list-container" id="product-container-div">
+                <div id="showmore">
+                    <#list  list as  product>
+
+                        <#if  product.goodsInfoStock == 0>
+                            <li class="sold-out" >
+                                <#else>
+                            <li >
+                        </#if>
+
+                        <a href="" class="img">
+                            <img src="${product.goodsInfoImgId}" alt="${product.goodsInfoName}">
+                            <#if product.goodsInfoStock == 0><span>无货</span></#if>
+                        </a>
+                        <div class="words">
+                            <p class="name"><a href="/goodsinfo">${product.goodsInfoName}</a></p>
+                            <p class="price" dir="activityIcon">
+                                <strong>￥${product.goodsInfoPreferPrice?string("0.00")}</strong>
+                                <#if product.extProp??>
+                                    <#if product.extProp.activityType==0><em>满减</em>
+                                        <elseif product.extProp.activityType==1><em>满折</em>
+                                            <elseif product.extProp.activityType==3><em>抢购</em>
+                                                <elseif product.extProp.activityType==4><em>满赠</em>
+                                    </#if>
+                                    <#if (product.extProp.SUIT_TIME)?? && product.extProp.isSuit == 1><em>套装</em> </#if>
+                                    <#if (product.extProp.isAllCoupon)?? &&product.extProp.isAllCoupon==1><em>领券</em> </#if>
+                                    <#if (product.extProp.activityTypeGroupon)?? &&product.extProp.activityTypeGroupon==6><em>拼团
+                                    </em> </#if>
+                                </#if>
+
+                            </p>
+                            <p class="grey">
+                                <#if product.isThird == '0'><span class="self">自营</span></#if>
+                                <#if product.isThird != '0'><span class="self">${product.thirdName}</span></#if>
+
+
+                                <span>好评
+                <#if product.comment??>
+                ${((product.comment.goodCount/product.comment.commentCount)*100)?string("0")
+                } <#else> 0 </#if>%</span>
+                                <span>
+                <#if product.comment??>
+                    ${product.comment.commentCount}<#else> 0 </#if>人评价</span>
+
+                            </p>
+                        </div>
+                        </li>
+                    </#list>
+                </div>
+            </ul>
+        </div>
+        <#else>
+            <div class="empty" style="background:none;">
+                <div class="empty-tips">
+                    <img src="${basePath}/images/no-goods.png" alt="">
+                    <p class="grey">抱歉，没有更多商品啦！</p>
+                </div>
+            </div>
+    </#if>
+</div>
+
+
 </body>
 </html>

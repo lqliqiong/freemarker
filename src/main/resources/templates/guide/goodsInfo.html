@@ -1,14 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>freemarker</title>
-</head>
+    <meta charset="UTF-8">
+    <title>freemarker</title>
+    <link rel="stylesheet" href="/css/newstyle.m.css">
+    </head>
 <body>
 
-<h1>oo${info.goodsInfoName}111</h1>
-<!--<#assign var="hello spring boot 学习你很开心！" />-->
-<!--<font size="18px">${var}</font>-->
-<!--<hr size="10" coloe="red">-->
+<div class="content native-scroll" style="padding-top: 0;">
+    <div id="container-scroll">
+        <div class="swiper-container swiper-container-horizontal swiper-container-android" id="goodGallery">
+            <div class="swiper-wrapper" style="transition-duration: 0ms; " >
+                <a class="detail_img" href="">
+                    <img alt="" src="http://kstoreimages.b0.upaiyun.com/1472468955054.jpg">
+                </a>
+            </div>
+        </div>
+
+        <input type="hidden" id="currentTime" name="currentTime" value="1512551290361">
+        <input type="hidden" id="rushId" value="">
+
+
+        <input type="hidden" id="grouponId" value="">
+
+        <div class="good_info bottomBorder">
+            <p class="name">联想(Lenovo)小新Air 13.3英寸超轻薄笔记本电脑（I7-6500U 8G 256G PCIE SSD IPS FHD WIN10）银(8GB)</p>
+            <p class="subname"></p>
+
+            <p id="salesCountSpan" class="sales-volume pull-right">销量2000</p>
+
+            <p class="price">
+                ￥<strong>6999.00</strong>
+            </p>
+
+
+        </div>
+        <div class="common-box" id="activityContainer">
+            <div class="common-line promotions-in-details topBorder">
+                <a href="javascript:void(0);" onclick="showPromotionsDemo()">
+                    <em>促销</em>
+                    <div class="in promotions-gist">
+                        <div class="label-promotions">
+                            <span>满赠</span>
+                            <span class="prefer_suit_entrance" style="display: none;">特惠套装</span>
+                        </div>
+                    </div>
+                    <div class="in promotions-manjian">
+                        <p class="grey">可享受以下促销</p>
+                    </div>
+                </a><div class="in promotions-manzeng"><a href="javascript:void(0);" onclick="showPromotionsDemo()">
+            </a><div class="promotions-cont"><a href="javascript:void(0);" onclick="showPromotionsDemo()">
+                <span class="label">满赠</span>
+                <p>满1件获得以下赠品，赠完为止</p></a><ul class="gifts"><a href="javascript:void(0);" onclick="showPromotionsDemo()"></a><li><a href="javascript:void(0);" onclick="showPromotionsDemo()"></a><a href="../item/5719.html" target="_blank"><img src="http://kstoreimages.b0.upaiyun.com/1472190746130.jpg!160" art="惠普（HP） HP Laserjet PRO P1108激光打印机(家用)"></a><p class="name">惠普（HP） HP Laserjet PRO P1108激光打印机(家用)</p><p class="num">×1</p></li></ul>
+            </div>
+            </div>
+                <div class="in promotions-manzeng prefer_suit_entrance" style="display: none;">
+                    <div class="promotions-cont">
+                        <span class="label">特惠套装</span>
+                        <a href="/mobile/preferSuitList.htm?goodInfoId=5950">
+                            <p class="prefer_suit_short" style="padding-left: 16px;">共0款套装，最高省￥0.00</p>
+                        </a>
+                        <i class="iconfont icon-arrow"></i>
+                    </div>
+                </div>
+                <i class="iconfont icon-arrow"></i>
+
+            </div>
+        </div>
+        <div class="common-box TopBorder">
+            <div class="common-line">
+                <a href="javascript:openTypeOne()" data-popup=".props-choose" class="open-popup">
+                    <em>已选</em>
+                    <div class="in">
+                        <p class="yixuan">8GB</p>
+                    </div>
+                    <i class="iconfont icon-arrow" id="specBtn"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="common-box TopBorder">
+            <div class="common-line paddingBottomNone">
+                <a href="javascript:void(0)">
+                    <em>送至</em>
+                    <div class="in" id="songzhi">
+                        <p><span id="area_text">北京北京市朝阳区<b></b></span> <i class="iconfont icon-map"></i></p>
+                    </div>
+                </a>
+            </div>
+            <div class="common-line">
+                <a href="#">
+                    <em>运费</em>
+                    <div class="in">
+                        <p>
+                            <input type="hidden" id="isFreeDelivery" value="1">
+                            <span id="freightFee">5元</span>
+                            <!--包邮规则-->
+                            <span id="freeDeliveryInfo">满100元包邮</span>
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="common-line" style="padding-top: 0; margin-top: -5px;">
+                <a href="javascript:void(0)">
+                    <em style="top:0.2rem;">提示</em>
+                    <div class="in">
+                        <div class="service_tips">
+                            <span><i class="iconfont"></i> 正品保障</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="common-box TopBorder latest-comments">
+            <div class="h">
+                <a href="javascript:goGoodsComment()" class="r pull-right praise-rate" style="display: none;">好评<span class="red" id="haoPingLv">100%</span></a>
+                <div class="l"><span class="grey">评论(<span id="commentCount">暂无商品评价</span>)</span></div>
+                <i class="iconfont icon-arrow" onclick="goGoodsComment()"></i>
+            </div>
+            <div class="comments" onclick="goGoodsComment()">
+                <ul id="commentBody"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="height-correct"></div>
+</div>
+
 </body>
 </html>

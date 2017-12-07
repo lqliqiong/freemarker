@@ -1,0 +1,64 @@
+[
+
+  {
+    "goodsInfoId":5950,
+    "goodsInfoImgId":"http://kstoreimages.b0.upaiyun.com/1472468955054.jpg!352",
+    "goodsId":2176,
+    "goodsInfoItemNo":"201608291908481",
+    "goodsInfoName":"联想(Lenovo)小新Air 13.3英寸超轻薄笔记本电脑（I7-6500U 8G 256G PCIE SSD IPS FHD WIN10）银(8GB)",
+    "goodsInfoSubtitle":"",
+    "goodsInfoAdded":"1",
+    "goodsInfoStock":110,
+    "goodsInfoPreferPrice":6999,
+    "goodsInfoCostPrice":5999,
+    "goodsInfoMarketPrice":4999,
+    "goodsInfoWeight":1855,
+    "thirdId":0,
+    "thirdName":"BOSS平台商品",
+    "isThird":"0",
+    "saleCount":2006,
+    "showList":"1",
+    "catId":4802,
+    "thirdCateId":null,
+    "typeId":1194,
+    "marketingLabels":[
+       "抢购","包邮"
+    ],
+    "extProp":{
+      "ACTIVITY_TIME":1512540120000,
+      "activityType":4,
+      "isAllCoupon" :1
+    }
+   ,
+    "comment":{
+      "commentCount":9,
+      "goodCount":4
+    }
+  },
+
+  {
+    "goodsInfoId":5950,
+    "goodsInfoImgId":"http://kstoreimages.b0.upaiyun.com/1472468955054.jpg!352",
+    "goodsId":2176,
+    "goodsInfoItemNo":"201608291908481",
+    "goodsInfoName":"联想(Lenovo)小新Air 13.3英寸超轻薄笔记本电脑（I7-6500U 8G 256G PCIE SSD IPS FHD WIN10）银(8GB)",
+    "goodsInfoSubtitle":"",
+    "goodsInfoAdded":"1",
+    "goodsInfoStock":0,
+    "goodsInfoPreferPrice":6999,
+    "goodsInfoCostPrice":5999,
+    "goodsInfoMarketPrice":4999,
+    "goodsInfoWeight":1855,
+    "thirdId":10,
+    "thirdName":"小灰灰的店铺",
+    "isThird":"1",
+    "saleCount":2006,
+    "showList":"1",
+    "catId":4802,
+    "thirdCateId":null,
+    "typeId":1194,
+    "marketingLabels":[
+      "抢购"
+    ]
+  }
+  ]
