@@ -1,10 +1,10 @@
 package com.spring.controller;
 
-import java.util.Date;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 @Controller
 @RequestMapping("/")
@@ -17,6 +17,7 @@ public class FreemarkerController1 {
 		mv1.addObject("intVar",100);
 		mv1.addObject("LongVar",10000000000000000L);
 		mv1.addObject("doubleVar",3.141592675d);
+		mv1.addObject("doubleVar2",3.1d);
 		mv1.addObject("StringVar","我是freemarker,是字符串！");
 		mv1.addObject("booleanVar", true);
 		mv1.addObject("dateVar1",new Date());
