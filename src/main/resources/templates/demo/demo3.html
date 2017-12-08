@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>freemarker</title>
+</head>
+<body>
+<h1>4.3、表达式</h1>
+1、插值结果为字符串值:直接输出表达式结果</br>
+    <#assign answer=42/>  <#-- 赋值 -->
+    ${answer} <#-- 输出 --></br>
+   如果某段文本中包含大量的特殊符号,FreeMarker提供了另一种特殊格式:可以在指定字符串内容的引号前增加r标记,在r标记后的文件将会直接输出</br>
+    {r"C:\foo\bar"}
+    </br>
+2、 数值
+    表达式中的数值直接输出,不需要引号.小数点使用"."分隔,不能使用分组","符号.FreeMarker目前还不支持科学计数法,所以"1E3"是错误的.在FreeMarker表达式中使用数值需要注意以下几点:</br>
+    <#assign a=42/>  <#-- 赋值 -->
+
+    ${a} </br>
+
+    <#assign b=+42/>  <#-- 赋值 -->
+
+    ${b}</br>
+
+    <#assign c=42.00/>  <#-- 赋值 -->
+
+    ${c}</br>
+
+3、布尔值</br>
+   直接使用true和false,不使用引号.</br>
+   <#assign foo=true/>
+   ${foo?string("yes", "no")}</br>
+
+
+
+
+4、集合</br>
+    集合以方括号包括,各集合元素之间以英文逗号","分隔,看如下的例子:</br>
+    <#list ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期天"] as week>
+        ${week}
+    </#list>
+    </br>
+5、Map对象</br>
+    Map对象使用花括号包括,Map中的key-value对之间以英文冒号":"分隔,多组key-value对之间以英文逗号","分隔.下面是一个例子:</br>
+    <#assign c={"语文":78, "数学":80}/>
+    Map对象的key和value都是表达式,但是key必须是字符串</br>
+    ${c.语文}</br>
+
+6、算术运算符</br>
+    FreeMarker表达式中完全支持算术运算,FreeMarker支持的算术运算符包括:+, - , * , / , % 看如下的代码:</br>
+    <#assign x=5>
+
+    { x /2 }   </br>
+7、比较运算符</br>
+    表达式中支持的比较运算符有如下几个:</br>
+    1,=或者==:判断两个值是否相等.</br>
+    2,!=:判断两个值是否不等.</br>
+    3,>或者gt:判断左边值是否大于右边值</br>
+    4,>=或者gte:判断左边值是否大于等于右边值</br>
+    5,<或者lt:判断左边值是否小于右边值</br>
+    6,<=或者lte:判断左边值是否小于等于右边值</br>
+
+    注意:=和!=可以用于字符串,数值和日期来比较是否相等,但=和!=两边必须是相同类型的值,否则会产生错误,而且FreeMarker是精确比较,"x","x ","X"是不等的.其它的运行符可以作用于数字和日期,但不能作用于字符串,大部分的时候,使用gt等字母运算符代替>会有更好的效果,因为FreeMarker会把>解释成FTL标签的结束字符,当然,也可以使用括号来避免这种情况,如:</br>
+        <#assign var = 99/>
+        <#if var == 99>
+            <font color="red">var=99</font>
+            <#else>
+                <font coloe="green">var!=99</font>
+        </#if>
+        <br/>
+        <#if var &gt; 99>   <!-- &gt;  大于 -->
+            <font color="red">var大于99</font>
+            <#elseif var==99>
+                <font coloe="green">var=99</font>
+                <#else>
+                    <font coloe="blue">var小于99</font>
+        </#if>
+        <br/>
+8、逻辑运算符</br>
+    逻辑运算符有如下几个:</br>
+    逻辑与:&&</br>
+    逻辑或:||</br>
+    逻辑非:!</br>
+    <#assign var='Java'>
+    <#if var =='C' || var =='Java'>
+        <font color="red">Java or C</font><br/>
+    </#if>
+
+    <#if var =='Java' && var?length == 4>
+        <font color="yellow">Java length 4</font><br/>
+    </#if>
+
+    <#if (var =='Java' && var?length == 4) || (var == 'C')>
+        <font color="black">Java length 4或者C</font><br/><br/>
+    </#if>
+9、内建函数</br>
+        FreeMarker还提供了一些内建函数来转换输出,可以在任何变量后紧跟?,?后紧跟内建函数,就可以通过内建函数来轮换输出变量.下面是常用的内建的字符串函数:</br>
+        html:对字符串进行HTML编码</br>
+        cap_first:使字符串第一个字母大写</br>
+        lower_case:将字符串转换成小写</br>
+        upper_case:将字符串转换成大写</br>
+        trim:去掉字符串前后的空白字符</br>
+
+        下面是集合的常用内建函数</br>
+        size:获取序列中元素的个数</br>
+
+        下面是数字值的常用内建函数</br>
+        int:取得数字的整数部分,结果带符号</br>
+
+        例如:
+        <#assign test="Tom & Jerry">
+        ${test?upper_case}
+        <#assign a='hello'> <#assign b='world!'>
+        连接
+        <font color="red" size="18px">${a+b}</font>
+        <br />
+        截取
+        <font color="blue" size="18px">${(a+b)?substring(5,8)}</font>
+        <br />
+        长度
+        <font color="red" size="18px">${(a+b)?length}</font>
+        <br />
+        大写
+        <font color="blue" size="18px">${(a+b)?upper_case}</font>
+        <br />
+        小写
+        <font color="red" size="18px">${(a+b)?lower_case}</font>
+        <br />
+        index_of
+        <font color="blue" size="18px">${(a+b)?index_of('w')}</font>
+        <br />
+        replace
+        <font color="red" size="18px">${(a+b)?replace('o','abc')}</font>
+        <br />
+        last_index_of
+        <font color="blue" size="18px">${(a+b)?last_index_of('o')}</font>
+        </br>
+10、空值处理运算符</br>
+        FreeMarker对空值的处理非常严格,FreeMarker的变量必须有值,没有被赋值的变量就会抛出异常,因为FreeMarker未赋值的变量强制出错可以杜绝很多潜在的错误,如缺失潜在的变量命名,或者其他变量错误.这里所说的空值,实际上也包括那些并不存在的变量,对于一个Java的null值而言,我们认为这个变量是存在的,只是它的值为null,但对于FreeMarker模板而言,它无法理解null值,null值和不存在的变量完全相同.</br>
+
+        为了处理缺失变量,FreeMarker提供了两个运算符:</br>
+        !:指定缺失变量的默认值</br>
+        ??:判断某个变量是否存在</br>
+
+        其中,!运算符的用法有如下两种:</br>
+        variable!或variable!defaultValue,第一种用法不给缺失的变量指定默认值,表明默认值是空字符串,长度为0的集合,或者长度为0的Map对象.</br>
+
+        使用!指定默认值时,并不要求默认值的类型和变量类型相同.使用??运算符非常简单,它总是返回一个布尔值,用法为:variable??,如果该变量存在,返回true,否则返回false</br>
+
+        示例：
+        <ul>
+            <li>空值：<font size="20px" color="pink">${nullVar1!}</font></li>
+            <li>空值：<font size="20px" color="green">${nullVar!'我是默认值'}</font></li>
+            <li>不存在的变量：<font size="20px" color="blue">${变量!'我是默认变量'}</font></li>
+            <li>不存在的变量1：<font size="20px" color="red">${free!'我是默认变量'}</font></li>
+        </ul>
+</body>
+</html>
