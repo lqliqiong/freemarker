@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>freemarker</title>
+    <title>商品详情页</title>
     <link rel="stylesheet" href="/css/newstyle.m.css">
     </head>
 <body>
@@ -12,7 +12,9 @@
         <div class="swiper-container swiper-container-horizontal swiper-container-android" id="goodGallery">
             <div class="swiper-wrapper" style="transition-duration: 0ms; " >
                 <a class="detail_img" href="">
-                    <img alt="" src="http://kstoreimages.b0.upaiyun.com/1472468955054.jpg">
+
+                    <img alt="" src="${info.goodsInfoImgId!'http://kstoreimages.b0.upaiyun.com/1472468955054.jpg'}">
+
                 </a>
             </div>
         </div>
@@ -24,13 +26,15 @@
         <input type="hidden" id="grouponId" value="">
 
         <div class="good_info bottomBorder">
-            <p class="name">联想(Lenovo)小新Air 13.3英寸超轻薄笔记本电脑（I7-6500U 8G 256G PCIE SSD IPS FHD WIN10）银(8GB)</p>
+
+            <p class="name">${info.goodsInfoName}</p>
+
             <p class="subname"></p>
 
-            <p id="salesCountSpan" class="sales-volume pull-right">销量2000</p>
+            <p id="salesCountSpan" class="sales-volume pull-right">销量：${info.saleCount}</p>
 
             <p class="price">
-                ￥<strong>6999.00</strong>
+                ￥<strong>${info.goodsInfoPrice}</strong>
             </p>
 
 
@@ -41,10 +45,24 @@
                     <em>促销</em>
                     <div class="in promotions-gist">
                         <div class="label-promotions">
-                            <span>满赠</span>
-                            <span class="prefer_suit_entrance" style="display: none;">特惠套装</span>
+                           <!-- <#if info.extProp??>
+                                <#if info.extProp.activityType==0><em>满减</em>
+                                <#elseif info.extProp.activityType==1><em>满折</em>
+                                <#elseif info.extProp.activityType==3><em>抢购</em>
+                                <#elseif info.extProp.activityType==4><em>满赠</em>
+                                </#if>
+                            </#if>-->
+
                         </div>
                     </div>
+                </div>
+
+
+            <#list info.extProp?keys as key>
+                <div>
+                    ${key} :${info.extProp[key]}
+                </div>
+            </#list>
                     <div class="in promotions-manjian">
                         <p class="grey">可享受以下促销</p>
                     </div>
@@ -116,7 +134,7 @@
         <div class="common-box TopBorder latest-comments">
             <div class="h">
                 <a href="javascript:goGoodsComment()" class="r pull-right praise-rate" style="display: none;">好评<span class="red" id="haoPingLv">100%</span></a>
-                <div class="l"><span class="grey">评论(<span id="commentCount">暂无商品评价</span>)</span></div>
+                <div class="l"><span class="grey">评论<span id="commentCount"><#if info.comment.commentCount == 0 >暂无商品评价<#else>${info.comment.commentCount}  &nbsp;&nbsp; 好评率：${((info.comment.goodCount/info.comment.commentCount)*100)?string("0")}</#if>%</span></span></div>
                 <i class="iconfont icon-arrow" onclick="goGoodsComment()"></i>
             </div>
             <div class="comments" onclick="goGoodsComment()">
@@ -126,6 +144,8 @@
     </div>
     <div class="height-correct"></div>
 </div>
-
+<#list info.marketingLabels as it>
+<div><em>${it}</em></div>
+</#list>
 </body>
 </html>
