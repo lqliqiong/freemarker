@@ -1,4 +1,29 @@
 {
-  "goodsInfoId":"12",
-  "goodsInfoName":"苹果"
+    "goodsInfoId":5950,
+    "goodsInfoName":"联想(Lenovo)小新Air 13.3英寸超轻薄笔记本电脑（I7-6500U 8G 256G PCIE SSD IPS FHD WIN10）银(8GB)233",
+    "goodsInfoNum":"201608291908481",
+    "goodsInfoPrice":5999,
+    "goodsInfoImgId":"http://kstoreimages.b0.upaiyun.com/1472468955054.jpg!352",
+    "goodsInfoStock":0,
+    "goodsInfoPreferPrice":6999,
+    "goodsInfoCostPrice":4999,
+    "goodsInfoMarketPrice":4999,
+    "thirdId":10,
+    "thirdName":"大嘴巴批发市场",
+    "fictitiousSalesCount":500,
+    "isThird":"1",
+    "isCustomerDiscount":"是",
+    "saleCount":10000,
+    "marketingLabels":[
+      "抢购","满折","满减","满赠"
+    ],
+    "extProp":{
+      "ACTIVITY_TIME":1512540120000,
+      "activityType":4,
+      "isAllCoupon" :1
+    },
+    "comment":{
+      "commentCount":9,
+      "goodCount":4
+    }
 }
